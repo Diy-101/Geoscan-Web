@@ -19,7 +19,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'space-between',
   flexShrink: 0,
-  borderRadius: `calc(${theme.shape.borderRadius}px + 8px)`,
+  borderRadius: `calc(${theme.shape.borderRadius}px)`,
   backdropFilter: 'blur(24px)',
   border: '1px solid',
   borderColor: (theme.vars || theme).palette.divider,
@@ -27,7 +27,7 @@ const StyledToolbar = styled(Toolbar)(({ theme }) => ({
     ? `rgba(${theme.vars.palette.background.defaultChannel} / 0.4)`
     : alpha(theme.palette.background.default, 0.4),
   boxShadow: (theme.vars || theme).shadows[1],
-  padding: '8px 12px',
+  padding: '10px 20px',
 }));
 
 export default function AppAppBar() {
@@ -45,48 +45,49 @@ export default function AppAppBar() {
         boxShadow: 0,
         bgcolor: 'transparent',
         backgroundImage: 'none',
-        mt: 'calc(var(--template-frame-height, 0px) + 28px)',
+        mt: 'calc(var(--template-frame-height, 0px) + 10px)',
+        width: '100%',
       }}
     >
-      <Container maxWidth="lg">
+      <Container maxWidth={false}>
         <StyledToolbar variant="dense" disableGutters>
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
             <Sitemark />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant="text" color="info" size="small">
-                Features
+              <Button variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
+                Особенности
               </Button>
-              <Button variant="text" color="info" size="small">
-                Testimonials
+              <Button variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
+                Отзывы
               </Button>
-              <Button variant="text" color="info" size="small">
-                Highlights
+              <Button variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
+                Обзор
               </Button>
-              <Button variant="text" color="info" size="small">
-                Pricing
+              <Button variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
+                Тарифы
               </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
+              <Button variant="text" color="info" sx={{ minWidth: 0, fontSize: '0.875rem', padding: '8px 12px' }}>
                 FAQ
               </Button>
-              <Button variant="text" color="info" size="small" sx={{ minWidth: 0 }}>
-                Blog
+              <Button variant="text" color="info" sx={{ minWidth: 0, fontSize: '0.875rem', padding: '8px 12px' }}>
+                Блог
               </Button>
             </Box>
           </Box>
           <Box
             sx={{
               display: { xs: 'none', md: 'flex' },
-              gap: 1,
+              gap: 2,
               alignItems: 'center',
             }}
           >
-            <Button color="primary" variant="text" size="small">
-              Sign in
+            <Button color="primary" variant="text" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
+              Войти
             </Button>
-            <Button color="primary" variant="contained" size="small">
-              Sign up
+            <Button color="primary" variant="contained" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
+              Создать
             </Button>
-            <ColorModeIconDropdown />
+            <ColorModeIconDropdown size="medium" />
           </Box>
           <Box sx={{ display: { xs: 'flex', md: 'none' }, gap: 1 }}>
             <ColorModeIconDropdown size="medium" />

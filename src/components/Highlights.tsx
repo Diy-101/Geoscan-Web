@@ -6,52 +6,56 @@ import Grid from '@mui/material/Grid2';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import AutoFixHighRoundedIcon from '@mui/icons-material/AutoFixHighRounded';
-import ConstructionRoundedIcon from '@mui/icons-material/ConstructionRounded';
+import SpeedIcon from '@mui/icons-material/Speed';
 import QueryStatsRoundedIcon from '@mui/icons-material/QueryStatsRounded';
 import SettingsSuggestRoundedIcon from '@mui/icons-material/SettingsSuggestRounded';
 import SupportAgentRoundedIcon from '@mui/icons-material/SupportAgentRounded';
 import ThumbUpAltRoundedIcon from '@mui/icons-material/ThumbUpAltRounded';
+import Icon from './IconArrow.tsx';
+import { useTheme } from '@mui/material/styles';
 
 const items = [
   {
     icon: <SettingsSuggestRoundedIcon />,
-    title: 'Adaptable performance',
+    title: 'Комплексное производство',
     description:
-      'Our product effortlessly adjusts to your needs, boosting efficiency and simplifying your tasks.',
+      'Каждый продукт, сошедший с конвейера, удовлетворяет стандартам качества и всем требованиям клиентов',
   },
   {
-    icon: <ConstructionRoundedIcon />,
-    title: 'Built to last',
+    icon: <SpeedIcon />,
+    title: 'Скорость доставки данных',
     description:
-      'Experience unmatched durability that goes above and beyond with lasting investment.',
+      'Вы можете быть уверенны,что в нужный момент ваши данные будут доставлены во время',
   },
   {
     icon: <ThumbUpAltRoundedIcon />,
-    title: 'Great user experience',
+    title: 'Работа с клиентами',
     description:
-      'Integrate our product into your routine with an intuitive and easy-to-use interface.',
+      'Каждый клиент для нас это отдельный случай, требующий индивидуального подхода',
   },
   {
     icon: <AutoFixHighRoundedIcon />,
-    title: 'Innovative functionality',
+    title: 'Инновационные технологии',
     description:
-      'Stay ahead with features that set new standards, addressing your evolving needs better than the rest.',
+      'Все новые технологии, вводимые в производство, проходят тщательную проверку качества',
   },
   {
     icon: <SupportAgentRoundedIcon />,
-    title: 'Reliable support',
+    title: 'Служба поддержики',
     description:
-      'Count on our responsive customer support, offering assistance that goes beyond the purchase.',
+      'Наша служба поддержки работает 24/7, чтобы помочь вам в любой ситуации',
   },
   {
     icon: <QueryStatsRoundedIcon />,
-    title: 'Precision in every detail',
+    title: 'Данные ДЗЗ',
     description:
-      'Enjoy a meticulously crafted product where small touches make a significant impact on your overall experience.',
+      'Данные ДЗЗ, которые вы получаете со спутников, проходят тщательную проверку и валидацию',
   },
 ];
 
 export default function Highlights() {
+  const theme = useTheme();
+
   return (
     <Box
       id="highlights"
@@ -59,7 +63,7 @@ export default function Highlights() {
         pt: { xs: 4, sm: 12 },
         pb: { xs: 8, sm: 16 },
         color: 'white',
-        bgcolor: 'grey.900',
+        bgcolor: theme.palette.mode === 'dark' ? '#000000' : '#ffffff',
       }}
     >
       <Container
@@ -76,14 +80,13 @@ export default function Highlights() {
             width: { sm: '100%', md: '60%' },
             textAlign: { sm: 'left', md: 'center' },
           }}
-        >
-          <Typography component="h2" variant="h4" gutterBottom>
-            Highlights
+        ><Icon />
+          <Typography component="h2" variant="h4" gutterBottom sx={{ color: 'text.primary' }}>
+            Наши стандарты
           </Typography>
-          <Typography variant="body1" sx={{ color: 'grey.400' }}>
-            Explore why our product stands out: adaptability, durability,
-            user-friendly design, and innovation. Enjoy reliable customer support and
-            precision in every detail.
+          <Typography variant="body1" sx={{ color: 'text.secondary' }}>
+            Изучите наши стандарты, чтобы увидеть преимущества нашего продукта и сделайте правильный выбор.
+            Надежность, скорость, интуитивность - лишь не многие аспекты, которыми мы дорожим
           </Typography>
         </Box>
         <Grid container spacing={2}>
@@ -99,15 +102,15 @@ export default function Highlights() {
                   p: 3,
                   height: '100%',
                   borderColor: 'hsla(220, 25%, 25%, 0.3)',
-                  backgroundColor: 'grey.800',
+                  backgroundColor: theme.palette.mode === 'dark' ? '#000000' : '#ffffff',
                 }}
               >
-                <Box sx={{ opacity: '50%' }}>{item.icon}</Box>
+                <Box sx={{ opacity: '50%', color: 'text.primary' }}>{item.icon}</Box>
                 <div>
-                  <Typography gutterBottom sx={{ fontWeight: 'medium' }}>
+                  <Typography gutterBottom sx={{ fontWeight: 'medium', color: 'text.primary' }}>
                     {item.title}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: 'grey.400' }}>
+                  <Typography variant="body2" sx={{ color: 'text.primary' }}>
                     {item.description}
                   </Typography>
                 </div>

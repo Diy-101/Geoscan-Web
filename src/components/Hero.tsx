@@ -9,6 +9,7 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import visuallyHidden from '@mui/utils/visuallyHidden';
 import { styled } from '@mui/material/styles';
+import RussiaMap from './RussianMap.tsx';
 
 const StyledBox = styled('div')(({ theme }) => ({
   alignSelf: 'center',
@@ -21,7 +22,7 @@ const StyledBox = styled('div')(({ theme }) => ({
   border: '1px solid',
   borderColor: (theme.vars || theme).palette.grey[200],
   boxShadow: '0 0 12px 8px hsla(220, 25%, 80%, 0.2)',
-  backgroundImage: `url(${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/screenshots/material-ui/getting-started/templates/dashboard.jpg)`,
+  backgroundImage: `url(${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/screenshots/material-ui/getting-started/templates/dashboard.jpg)`, // поменять фото
   backgroundSize: 'cover',
   [theme.breakpoints.up('sm')]: {
     marginTop: theme.spacing(10),
@@ -44,13 +45,14 @@ export default function Hero() {
         backgroundRepeat: 'no-repeat',
 
         backgroundImage:
-          'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 90%), transparent)',
+          'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(12, 100.00%, 90.00%), transparent)',
         ...theme.applyStyles('dark', {
           backgroundImage:
-            'radial-gradient(ellipse 80% 50% at 50% -20%, hsl(210, 100%, 16%), transparent)',
+            'radial-gradient(ellipse 50% 40% at 50% -20%, hsl(12, 100%, 40%), transparent)',
         }),
       })}
     >
+
       <Container
         sx={{
           display: 'flex',
@@ -74,7 +76,7 @@ export default function Hero() {
               fontSize: 'clamp(3rem, 10vw, 3.5rem)',
             }}
           >
-            Our&nbsp;latest&nbsp;
+            Открой&nbsp;для&nbsp;себя&nbsp;
             <Typography
               component="span"
               variant="h1"
@@ -82,11 +84,11 @@ export default function Hero() {
                 fontSize: 'inherit',
                 color: 'primary.main',
                 ...theme.applyStyles('dark', {
-                  color: 'primary.light',
+                  color: 'primary.main',
                 }),
               })}
             >
-              products
+              данные
             </Typography>
           </Typography>
           <Typography
@@ -96,15 +98,15 @@ export default function Hero() {
               width: { sm: '100%', md: '80%' },
             }}
           >
-            Explore our cutting-edge dashboard, delivering high-quality solutions
-            tailored to your needs. Elevate your experience with top-tier features
-            and services.
+            Передовые технологии дистанционного зондирования для мониторинга и анализа изменений на Земле.
+            Точные спутниковые снимки и аналитика, доступные в каждом пикселе пространства.
           </Typography>
+          <RussiaMap sx={{ mb: 10, mt: 5 }} />
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
             spacing={1}
             useFlexGap
-            sx={{ pt: 2, width: { xs: '100%', sm: '350px' } }}
+            sx={{ pt: 1, width: { xs: '100%', sm: '350px' } }}
           >
             <InputLabel htmlFor="email-hero" sx={visuallyHidden}>
               Email
@@ -115,7 +117,7 @@ export default function Hero() {
               size="small"
               variant="outlined"
               aria-label="Enter your email address"
-              placeholder="Your email address"
+              placeholder="Ваш email"
               fullWidth
               slotProps={{
                 htmlInput: {
@@ -130,22 +132,20 @@ export default function Hero() {
               size="small"
               sx={{ minWidth: 'fit-content' }}
             >
-              Start now
+              Связаться
             </Button>
           </Stack>
           <Typography
             variant="caption"
             color="text.secondary"
-            sx={{ textAlign: 'center' }}
+            sx={{ textAlign: 'center', mb: 2 }}
           >
-            By clicking &quot;Start now&quot; you agree to our&nbsp;
+            Нажимая &quot;Начать&quot; вы соглашаетесь с нашей&nbsp;
             <Link href="#" color="primary">
-              Terms & Conditions
+              Политикой конфиденциальности
             </Link>
-            .
           </Typography>
         </Stack>
-        <StyledBox id="image" />
       </Container>
     </Box>
   );

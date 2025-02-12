@@ -20,7 +20,7 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
       <AppAppBar />
       <Hero />
       <div>
-        <LogoCollection />
+        <Divider />
         <Features />
         <Divider />
         <Testimonials />
@@ -30,6 +30,8 @@ export default function MarketingPage(props: { disableCustomTheme?: boolean }) {
         <Pricing />
         <Divider />
         <FAQ />
+        <Divider />
+        <LogoCollection />
         <Divider />
         <Footer />
       </div>

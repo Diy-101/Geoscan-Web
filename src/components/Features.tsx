@@ -6,35 +6,37 @@ import MuiChip from '@mui/material/Chip';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
+import { Stack } from '@mui/material';
 
-import DevicesRoundedIcon from '@mui/icons-material/DevicesRounded';
-import EdgesensorHighRoundedIcon from '@mui/icons-material/EdgesensorHighRounded';
-import ViewQuiltRoundedIcon from '@mui/icons-material/ViewQuiltRounded';
+import BuildIcon from '@mui/icons-material/Build';
+import PublicIcon from '@mui/icons-material/Public';
+import LibraryBooksIcon from '@mui/icons-material/LibraryBooks';
+import SitemarkIcon from './SitemarkIcon.tsx';
 
 const items = [
   {
-    icon: <ViewQuiltRoundedIcon />,
-    title: 'Dashboard',
+    icon: <BuildIcon />,
+    title: 'Комплексное производство',
     description:
-      'This item could provide a snapshot of the most important metrics or data points related to the product.',
-    imageLight: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/dash-light.png")`,
-    imageDark: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/dash-dark.png")`,
+      'На нашем производстве мы используем только качественные материалы, что помогает нам обеспечить высокое качество продукции',
+    imageLight: `url("http://localhost:3000/assets/Complex_production_1.jpg")`,
+    imageDark: `url("http://localhost:3000/assets/Complex_production_1.jpg")`,
   },
   {
-    icon: <EdgesensorHighRoundedIcon />,
-    title: 'Mobile integration',
+    icon: <PublicIcon />,
+    title: 'Работаем по всей России',
     description:
-      'This item could provide information about the mobile app version of the product.',
-    imageLight: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/mobile-light.png")`,
-    imageDark: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/mobile-dark.png")`,
+      'Мы работаем по всей России, что позволяет нашим клиентам получить данные ДЗЗ из любой точку страны',
+    imageLight: `url("http://localhost:3000/assets/Global.jpg")`,
+    imageDark: `url("http://localhost:3000/assets/Global.jpg")`,
   },
   {
-    icon: <DevicesRoundedIcon />,
-    title: 'Available on all platforms',
+    icon: <LibraryBooksIcon />,
+    title: 'Бесплатное обучение полетам',
     description:
-      'This item could let users know the product is available on all platforms, such as web, mobile, and desktop.',
-    imageLight: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/devices-light.png")`,
-    imageDark: `url("${process.env.TEMPLATE_IMAGE_URL || 'https://mui.com'}/static/images/templates/templates-images/devices-dark.png")`,
+      'Мы предоставляем бесплатное обучение упралению дронами',
+    imageLight: `url("http://localhost:3000/assets/Education.jpg")`,
+    imageDark: `url("http://localhost:3000/assets/Education.jpg")`,
   },
 ];
 
@@ -111,9 +113,9 @@ export function MobileLayout({
           style={
             items[selectedItemIndex]
               ? ({
-                  '--items-imageLight': items[selectedItemIndex].imageLight,
-                  '--items-imageDark': items[selectedItemIndex].imageDark,
-                } as any)
+                '--items-imageLight': items[selectedItemIndex].imageLight,
+                '--items-imageDark': items[selectedItemIndex].imageDark,
+              } as any)
               : {}
           }
         />
@@ -145,21 +147,24 @@ export default function Features() {
   return (
     <Container id="features" sx={{ py: { xs: 8, sm: 16 } }}>
       <Box sx={{ width: { sm: '100%', md: '60%' } }}>
-        <Typography
-          component="h2"
-          variant="h4"
-          gutterBottom
-          sx={{ color: 'text.primary' }}
-        >
-          Product features
-        </Typography>
+        <Stack spacing={2}>  {/* Устанавливаем расстояние между элементами */}
+          <SitemarkIcon />
+          <Typography
+            component="h2"
+            variant="h4"
+            gutterBottom
+            sx={{ color: 'text.primary' }}
+          >
+            Преимущества ГК «Геоскан»
+          </Typography>
+        </Stack>
         <Typography
           variant="body1"
           sx={{ color: 'text.secondary', mb: { xs: 2, sm: 4 } }}
         >
-          Provide a brief overview of the key features of the product. For example,
-          you could list the number of features, their types or benefits, and
-          add-ons.
+          Ниже представлены основные преимущества и особенности ГК «Геоскан».
+          Вы можете ознакомиться с ними в ниже. Чтобы получить
+          подробную информацию о каждом из них, нажмите на кнопку.
         </Typography>
       </Box>
       <Box
@@ -247,9 +252,10 @@ export default function Features() {
             <Box
               sx={(theme) => ({
                 m: 'auto',
-                width: 420,
-                height: 500,
-                backgroundSize: 'contain',
+                width: 620,
+                height: 480,
+                borderRadius: 1,
+                backgroundSize: 'cover',
                 backgroundImage: 'var(--items-imageLight)',
                 ...theme.applyStyles('dark', {
                   backgroundImage: 'var(--items-imageDark)',
@@ -258,9 +264,9 @@ export default function Features() {
               style={
                 items[selectedItemIndex]
                   ? ({
-                      '--items-imageLight': items[selectedItemIndex].imageLight,
-                      '--items-imageDark': items[selectedItemIndex].imageDark,
-                    } as any)
+                    '--items-imageLight': items[selectedItemIndex].imageLight,
+                    '--items-imageDark': items[selectedItemIndex].imageDark,
+                  } as any)
                   : {}
               }
             />
