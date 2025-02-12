@@ -42,7 +42,7 @@ export default function FAQ() {
           textAlign: { sm: 'left', md: 'center' },
         }}
       >
-        Frequently asked questions
+        Часто задаваемые вопросы
       </Typography>
       <Box sx={{ width: '100%' }}>
         <Accordion
@@ -55,7 +55,7 @@ export default function FAQ() {
             id="panel1d-header"
           >
             <Typography component="span" variant="subtitle2">
-              How do I contact customer support if I have a question or issue?
+              Как мне связаться со службой поддержки, если у меня есть вопрос или проблема?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -64,10 +64,10 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              You can reach our customer support team by emailing&nbsp;
+              Вы можете связаться с нашей службой поддержки клиентов по электронной почте&nbsp;
               <Link href="mailto:support@email.com">support@email.com</Link>
-              &nbsp;or calling our toll-free number. We&apos;re here to assist you
-              promptly.
+              &nbsp;или позвонив по нашему бесплатному номеру. Наша служба поддержки готова
+              помочь вам с любыми вопросами и проблемами.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -81,7 +81,7 @@ export default function FAQ() {
             id="panel2d-header"
           >
             <Typography component="span" variant="subtitle2">
-              Can I return the product if it doesn&apos;t meet my expectations?
+              Могу ли я вернуть товар, если он не соответствует моим ожиданиям или не удовлетворяет моим требованиям?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -90,9 +90,8 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              Absolutely! We offer a hassle-free return policy. If you&apos;re not
-              completely satisfied, you can return the product within [number of
-              days] days for a full refund or exchange.
+              При полной аргументации и несоответствии с нашими требованиями, мы готовы вернуть
+              денежные средства клиенту. Однако для этого должны быть вески причины.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -106,7 +105,7 @@ export default function FAQ() {
             id="panel3d-header"
           >
             <Typography component="span" variant="subtitle2">
-              What makes your product stand out from others in the market?
+              Что отличает ваш продукт от других на рынке?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -115,9 +114,9 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              Our product distinguishes itself through its adaptability, durability,
-              and innovative features. We prioritize user satisfaction and
-              continually strive to exceed expectations in every aspect.
+              Наш продукт отличается своей адаптируемостью, долговечностью,
+              и инновационные функции. Мы уделяем приоритетное внимание удовлетворению пользователей и
+              постоянно стремиться превзойти ожидания во всех аспектах.
             </Typography>
           </AccordionDetails>
         </Accordion>
@@ -131,7 +130,7 @@ export default function FAQ() {
             id="panel4d-header"
           >
             <Typography component="span" variant="subtitle2">
-              Is there a warranty on the product, and what does it cover?
+              Есть ли гарантия на товар и на что она распространяется?
             </Typography>
           </AccordionSummary>
           <AccordionDetails>
@@ -140,10 +139,9 @@ export default function FAQ() {
               gutterBottom
               sx={{ maxWidth: { sm: '100%', md: '70%' } }}
             >
-              Yes, our product comes with a [length of warranty] warranty. It covers
-              defects in materials and workmanship. If you encounter any issues
-              covered by the warranty, please contact our customer support for
-              assistance.
+              Да, на наш продукт распространяется гарантия 10 дней. Если у вас возникнут какие-либо проблемы
+              на который распространяется гарантия, пожалуйста, свяжитесь с нашей службой поддержки клиентов для
+              помощь.
             </Typography>
           </AccordionDetails>
         </Accordion>

@@ -1,6 +1,7 @@
-import React from "react"
-import { useState } from "react"
-import { Box } from "@mui/material"
+import React, { useState } from 'react';
+import { Box, Modal, Typography, Button } from '@mui/material';
+import PopUp from './PopUp.tsx';
+
 type Region = {
     id: string
     name: string
@@ -65,11 +66,16 @@ interface RussiaMapProps {
 
 const RussiaMap: React.FC<RussiaMapProps> = ({ sx }) => {
     const [hoveredRegion, setHoveredRegion] = useState<string | null>(null)
-
+    const [open, setOpen] = useState<boolean>(false);
+    const [selectedRegion, setSelectedRegion] = useState<string | null>(null);
     const handleRegionClick = (regionId: string) => {
-        console.log(`Выбран регион: ${regionId}`);
+        setSelectedRegion(regionId);
+        setOpen(true);
     };
 
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     return (
         <Box display="flex" justifyContent="center" alignItems="center" width="100%" height="100%" overflow="visible" sx={sx}>
@@ -84,11 +90,12 @@ const RussiaMap: React.FC<RussiaMapProps> = ({ sx }) => {
                         key={region.id}
                         onMouseEnter={() => setHoveredRegion(region.id)}
                         onMouseLeave={() => setHoveredRegion(null)}
+                        onClick={() => handleRegionClick(region.id)} // Открываем PopUp при клике
                         style={{
                             transform: hoveredRegion === region.id ? "scale(1.2) translateX(-20px)" : "translateX(-20px)",
                             transformOrigin: "center",
                             transition: "transform 0.5s ease-in-out",
-                            overflow: "visible",
+                            cursor: 'pointer', // Добавление курсора
                         }}
                     >
                         <path
@@ -100,6 +107,13 @@ const RussiaMap: React.FC<RussiaMapProps> = ({ sx }) => {
                     </g>
                 ))}
             </svg>
+
+            {/* Попап компонент */}
+            <PopUp
+                open={open}
+                onClose={handleClose}
+                selectedRegion={selectedRegion}
+            />
         </Box>
     )
 }

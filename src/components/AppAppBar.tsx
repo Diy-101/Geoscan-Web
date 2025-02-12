@@ -54,22 +54,22 @@ export default function AppAppBar() {
           <Box sx={{ flexGrow: 1, display: 'flex', alignItems: 'center', px: 0 }}>
             <Sitemark />
             <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-              <Button variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
-                Особенности
+              <Button component="a" href="#features" variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
+                Преимущества
               </Button>
-              <Button variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
+              <Button component="a" href="#testimonials" variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
                 Отзывы
               </Button>
-              <Button variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
-                Обзор
+              <Button component="a" href="#highlights" variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
+                Особенности
               </Button>
-              <Button variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
+              <Button component="a" href="#pricing" variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
                 Тарифы
               </Button>
-              <Button variant="text" color="info" sx={{ minWidth: 0, fontSize: '0.875rem', padding: '8px 12px' }}>
+              <Button component="a" href="#faq" variant="text" color="info" sx={{ minWidth: 0, fontSize: '0.875rem', padding: '8px 12px' }}>
                 FAQ
               </Button>
-              <Button variant="text" color="info" sx={{ minWidth: 0, fontSize: '0.875rem', padding: '8px 12px' }}>
+              <Button component="a" href="#footer" variant="text" color="info" sx={{ minWidth: 0, fontSize: '0.875rem', padding: '8px 12px' }}>
                 Блог
               </Button>
             </Box>
@@ -116,21 +116,21 @@ export default function AppAppBar() {
                   </IconButton>
                 </Box>
 
-                <MenuItem>Features</MenuItem>
-                <MenuItem>Testimonials</MenuItem>
-                <MenuItem>Highlights</MenuItem>
-                <MenuItem>Pricing</MenuItem>
+                <MenuItem>Преимущества</MenuItem>
+                <MenuItem>Цены</MenuItem>
+                <MenuItem>Особенности</MenuItem>
+                <MenuItem>Цены</MenuItem>
                 <MenuItem>FAQ</MenuItem>
-                <MenuItem>Blog</MenuItem>
+                <MenuItem>Блог</MenuItem>
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
                   <Button color="primary" variant="contained" fullWidth>
-                    Sign up
+                    Создать
                   </Button>
                 </MenuItem>
                 <MenuItem>
                   <Button color="primary" variant="outlined" fullWidth>
-                    Sign in
+                    Войти
                   </Button>
                 </MenuItem>
               </Box>

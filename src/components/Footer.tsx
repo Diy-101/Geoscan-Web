@@ -8,9 +8,9 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-import FacebookIcon from '@mui/icons-material/GitHub';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import TwitterIcon from '@mui/icons-material/X';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import ArrowCircleRightIcon from '@mui/icons-material/ArrowCircleRight';
+import BackHandIcon from '@mui/icons-material/BackHand';
 import SitemarkIcon from './SitemarkIcon.tsx';
 
 function Copyright() {
@@ -29,6 +29,7 @@ function Copyright() {
 export default function Footer() {
   return (
     <Container
+      id="footer"
       sx={{
         display: 'flex',
         flexDirection: 'column',
@@ -57,10 +58,10 @@ export default function Footer() {
           <Box sx={{ width: { xs: '100%', sm: '60%' } }}>
             <SitemarkIcon />
             <Typography variant="body2" gutterBottom sx={{ fontWeight: 600, mt: 2 }}>
-              Join the newsletter
+              Присоединяйтесь к нам
             </Typography>
             <Typography variant="body2" sx={{ color: 'text.secondary', mb: 2 }}>
-              Subscribe for weekly updates. No spams ever!
+              Также подписывайте на нашу рассылку, чтобы узнавать первыми о наших новостях
             </Typography>
             <InputLabel htmlFor="email-newsletter">Email</InputLabel>
             <Stack direction="row" spacing={1} useFlexGap>
@@ -71,7 +72,7 @@ export default function Footer() {
                 variant="outlined"
                 fullWidth
                 aria-label="Enter your email address"
-                placeholder="Your email address"
+                placeholder="Ваш email"
                 slotProps={{
                   htmlInput: {
                     autoComplete: 'off',
@@ -86,7 +87,7 @@ export default function Footer() {
                 size="small"
                 sx={{ flexShrink: 0 }}
               >
-                Subscribe
+                Подписаться
               </Button>
             </Stack>
           </Box>
@@ -99,21 +100,21 @@ export default function Footer() {
           }}
         >
           <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-            Product
+            Навигация
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            Features
+          <Link color="text.secondary" variant="body2" href="#" target="_blank" rel="noopener noreferrer">
+            Преимущества
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Testimonials
+          <Link color="text.secondary" variant="body2" href="#" target="_blank" rel="noopener noreferrer">
+            Отзывы
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Highlights
+          <Link color="text.secondary" variant="body2" href="#" target="_blank" rel="noopener noreferrer">
+            Наши стандарты
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Pricing
+          <Link color="text.secondary" variant="body2" href="#" target="_blank" rel="noopener noreferrer">
+            Цены
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
+          <Link color="text.secondary" variant="body2" href="#" target="_blank" rel="noopener noreferrer">
             FAQs
           </Link>
         </Box>
@@ -125,16 +126,16 @@ export default function Footer() {
           }}
         >
           <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-            Company
+            Компания
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            About us
+          <Link color="text.secondary" variant="body2" href="https://www.geoscan.ru/ru/about" target="_blank" rel="noopener noreferrer">
+            О нас
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Careers
+          <Link color="text.secondary" variant="body2" href="https://www.geoscan.ru/ru/vacancies" target="_blank" rel="noopener noreferrer">
+            Карьера
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Press
+          <Link color="text.secondary" variant="body2" href="https://www.geoscan.ru/ru/press-releases" target="_blank" rel="noopener noreferrer">
+            Пресса
           </Link>
         </Box>
         <Box
@@ -145,16 +146,16 @@ export default function Footer() {
           }}
         >
           <Typography variant="body2" sx={{ fontWeight: 'medium' }}>
-            Legal
+            Политика
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            Terms
+          <Link color="text.secondary" variant="body2" href="https://www.geoscan.ru/ru/about/privacy-policy" target="_blank" rel="noopener noreferrer">
+            Условия
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Privacy
+          <Link color="text.secondary" variant="body2" href="https://www.geoscan.ru/ru/about/privacy-policy" target="_blank" rel="noopener noreferrer">
+            Конфиденциальности
           </Link>
-          <Link color="text.secondary" variant="body2" href="#">
-            Contact
+          <Link color="text.secondary" variant="body2" href="https://www.geoscan.ru/ru/contacts" target="_blank" rel="noopener noreferrer">
+            Контакты
           </Link>
         </Box>
       </Box>
@@ -169,14 +170,14 @@ export default function Footer() {
         }}
       >
         <div>
-          <Link color="text.secondary" variant="body2" href="#">
-            Privacy Policy
+          <Link color="text.secondary" variant="body2" href="https://www.geoscan.ru/ru/about/privacy-policy" target="_blank" rel="noopener noreferrer">
+            Политика конфиденциальности
           </Link>
           <Typography sx={{ display: 'inline', mx: 0.5, opacity: 0.5 }}>
             &nbsp;•&nbsp;
           </Typography>
-          <Link color="text.secondary" variant="body2" href="#">
-            Terms of Service
+          <Link color="text.secondary" variant="body2" href="https://www.geoscan.ru/ru/about/privacy-policy" target="_blank" rel="noopener noreferrer">
+            Условия использования
           </Link>
           <Copyright />
         </div>
@@ -188,30 +189,30 @@ export default function Footer() {
         >
           <IconButton
             color="inherit"
-            size="small"
-            href="https://github.com/mui"
-            aria-label="GitHub"
+            size="medium"
+            href="https://t.me/geoscan"
+            aria-label="Telegram"
             sx={{ alignSelf: 'center' }}
           >
-            <FacebookIcon />
+            <TelegramIcon />
           </IconButton>
           <IconButton
             color="inherit"
-            size="small"
-            href="https://x.com/MaterialUI"
+            size="medium"
+            href="https://dzen.ru/geoscan"
             aria-label="X"
             sx={{ alignSelf: 'center' }}
           >
-            <TwitterIcon />
+            <BackHandIcon />
           </IconButton>
           <IconButton
             color="inherit"
-            size="small"
-            href="https://www.linkedin.com/company/mui/"
+            size="medium"
+            href="https://vk.com/geoscan.aero"
             aria-label="LinkedIn"
             sx={{ alignSelf: 'center' }}
           >
-            <LinkedInIcon />
+            <ArrowCircleRightIcon />
           </IconButton>
         </Stack>
       </Box>

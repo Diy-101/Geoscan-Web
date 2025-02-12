@@ -12,52 +12,75 @@ import Typography from '@mui/material/Typography';
 import AutoAwesomeIcon from '@mui/icons-material/AutoAwesome';
 import CheckCircleRoundedIcon from '@mui/icons-material/CheckCircleRounded';
 
-const tiers = [
+interface Tier {
+  type: string;
+  buttonVariant: 'outlined' | 'contained';
+  buttonColor: 'primary' | 'secondary';
+  buttonText: string;
+  title: string;
+  price: string;
+  description: string[];
+  subheader?: string;
+}
+
+const tiers: Tier[] = [
   {
-    title: 'Free',
+    title: 'Бесплатный',
     price: '0',
-    description: [
-      '10 users included',
-      '2 GB of storage',
-      'Help center access',
-      'Email support',
-    ],
-    buttonText: 'Sign up for free',
+    description: ['Поддержка 24/7', '4 бесплатные фотографии'],
+    buttonText: 'Начни бесплатно',
     buttonVariant: 'outlined',
     buttonColor: 'primary',
+    type: 'home',
   },
   {
-    title: 'Professional',
+    title: 'Профессиональный',
     subheader: 'Recommended',
-    price: '15',
+    price: '0 - Ω',
     description: [
-      '20 users included',
-      '10 GB of storage',
-      'Help center access',
-      'Priority email support',
-      'Dedicated team',
-      'Best deals',
+      'Поддержка 24/7',
+      'Хранение фотографий 30 дней',
+      'Приоритетная поддержка',
+      'Разные виды съемок',
     ],
-    buttonText: 'Start now',
+    buttonText: 'Выбрать зоны',
     buttonVariant: 'contained',
     buttonColor: 'secondary',
+    type: 'global',
   },
   {
-    title: 'Enterprise',
-    price: '30',
+    title: 'Особое сотрудничество',
+    price: 'Договорная',
     description: [
-      '50 users included',
-      '30 GB of storage',
-      'Help center access',
-      'Phone & email support',
+      'Особые условия',
+      'Скидки постоянным клиентам',
+      'Высший уровень поддержки',
+      'Поддержка по номеру телефона',
     ],
-    buttonText: 'Contact us',
+    buttonText: 'Связаться',
     buttonVariant: 'outlined',
     buttonColor: 'primary',
+    type: 'education',
   },
 ];
 
-export default function Pricing() {
+const Pricing: React.FC = () => {
+
+  const handleButtonClick = (tier: Tier) => {
+    let url: string;
+    if (tier.type === 'home') {
+      url = '#';
+    } else if (tier.type === 'global') {
+      url = '/global-operations';
+    } else if (tier.type === 'education') {
+      url = '/education';
+    } else {
+      url = '/default';
+    }
+
+    window.location.href = url;
+  };
+
   return (
     <Container
       id="pricing"
@@ -159,7 +182,7 @@ export default function Pricing() {
                     ${tier.price}
                   </Typography>
                   <Typography component="h3" variant="h6">
-                    &nbsp; per month
+                    &nbsp; в месяц
                   </Typography>
                 </Box>
                 <Divider sx={{ my: 2, opacity: 0.8, borderColor: 'divider' }} />
@@ -194,6 +217,7 @@ export default function Pricing() {
               </CardContent>
               <CardActions>
                 <Button
+                  onClick={() => handleButtonClick(tier)}  // Передаем tier в обработчик
                   fullWidth
                   variant={tier.buttonVariant as 'outlined' | 'contained'}
                   color={tier.buttonColor as 'primary' | 'secondary'}
@@ -208,3 +232,5 @@ export default function Pricing() {
     </Container>
   );
 }
+
+export default Pricing;
