@@ -19,24 +19,24 @@ const items = [
     title: 'Комплексное производство',
     description:
       'На нашем производстве мы используем только качественные материалы, что помогает нам обеспечить высокое качество продукции',
-    imageLight: `url("http://localhost:3000/assets/Complex_production_1.jpg")`,
-    imageDark: `url("http://localhost:3000/assets/Complex_production_1.jpg")`,
+    imageLight: `url("/assets/Complex_production_1.jpg")`,
+    imageDark: `url("/assets/Complex_production_1.jpg")`,
   },
   {
     icon: <PublicIcon />,
     title: 'Работаем по всей России',
     description:
       'Мы работаем по всей России, что позволяет нашим клиентам получить данные ДЗЗ из любой точку страны',
-    imageLight: `url("http://localhost:3000/assets/Global.jpg")`,
-    imageDark: `url("http://localhost:3000/assets/Global.jpg")`,
+    imageLight: `url("/assets/Global.jpg")`,
+    imageDark: `url("/assets/Global.jpg")`,
   },
   {
     icon: <LibraryBooksIcon />,
     title: 'Бесплатное обучение полетам',
     description:
       'Мы предоставляем бесплатное обучение упралению дронами',
-    imageLight: `url("http://localhost:3000/assets/Education.jpg")`,
-    imageDark: `url("http://localhost:3000/assets/Education.jpg")`,
+    imageLight: `url("/assets/Education.jpg")`,
+    imageDark: `url("/assets/Education.jpg")`,
   },
 ];
 

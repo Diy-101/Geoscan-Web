@@ -5,12 +5,12 @@ import Grid from '@mui/material/Grid';
 import { useTheme } from '@mui/system';
 
 const whiteLogos = [
-  'http://localhost:3000/assets/TumGu.svg',
-  'http://localhost:3000/assets/alrosa.svg',
-  'http://localhost:3000/assets/RZD.svg',
-  'http://localhost:3000/assets/Uter.svg',
-  'http://localhost:3000/assets/RBK.svg',
-  'http://localhost:3000/assets/Sk.svg',
+  '/assets/TumGu.svg',
+  '/assets/alrosa.svg',
+  '/assets/RZD.svg',
+  '/assets/Uter.svg',
+  '/assets/RBK.svg',
+  '/assets/Sk.svg',
 ];
 
 const darkLogos = [
