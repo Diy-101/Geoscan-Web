@@ -32,7 +32,7 @@ const items = [
   },
   {
     icon: <LibraryBooksIcon />,
-    title: 'Бесплатное обучение полетам',
+    title: 'Бесплатное обучение полётам',
     description:
       'Мы предоставляем бесплатное обучение упралению дронами',
     imageLight: `url("/assets/Education.jpg")`,
@@ -50,7 +50,7 @@ const Chip = styled(MuiChip)<ChipProps>(({ theme }) => ({
       props: ({ selected }) => selected,
       style: {
         background:
-          'linear-gradient(to bottom right, hsl(210, 98%, 48%), hsl(210, 98%, 35%))',
+          'linear-gradient(to bottom right, hsl(12, 100%, 50%), hsl(12, 100%, 40%))',
         color: 'hsl(0, 0%, 100%)',
         borderColor: (theme.vars || theme).palette.primary.light,
         '& .MuiChip-label': {
