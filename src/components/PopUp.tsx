@@ -1,13 +1,13 @@
 "use client"
 
 import React, { useState, useCallback, useEffect } from "react"
-import { Box, Typography, Button, CircularProgress, Autocomplete, TextField } from "@mui/material"
-import { MapContainer, TileLayer, Marker, Popup, ZoomControl, useMap } from "react-leaflet"
+import { Box, Typography, Button, CircularProgress, Autocomplete, TextField, Slider } from "@mui/material"
+import { MapContainer, TileLayer, Marker, Popup, ZoomControl, useMap, Rectangle } from "react-leaflet"
 import { PhotoCamera, Radar, Terrain, Thermostat } from "@mui/icons-material"
 import "leaflet/dist/leaflet.css"
 import L from "leaflet"
 
-// Фикс для иконок маркеров Leaflet 
+// Фикс для иконок маркеров Leaflet
 delete L.Icon.Default.prototype._getIconUrl
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
@@ -38,6 +38,38 @@ const MapUpdater: React.FC<{ center: [number, number]; zoom: number }> = ({ cent
   return null
 }
 
+const GridOverlay: React.FC<{ gridSize: number }> = ({ gridSize }) => {
+  const map = useMap()
+  const bounds = map.getBounds()
+  const gridLines: L.LatLngBoundsExpression[] = []
+
+  const { _northEast, _southWest } = bounds
+  const latStep = gridSize / 111.32 // Approximate degrees for 1km at the equator
+  const lonStep = gridSize / (111.32 * Math.cos(((_northEast.lat + _southWest.lat) / 2) * (Math.PI / 180)))
+
+  for (let lat = _southWest.lat; lat <= _northEast.lat; lat += latStep) {
+    gridLines.push([
+      [lat, _southWest.lng],
+      [lat, _northEast.lng],
+    ])
+  }
+
+  for (let lon = _southWest.lng; lon <= _northEast.lng; lon += lonStep) {
+    gridLines.push([
+      [_southWest.lat, lon],
+      [_northEast.lat, lon],
+    ])
+  }
+
+  return (
+    <>
+      {gridLines.map((line, index) => (
+        <Rectangle key={index} bounds={line} pathOptions={{ color: "blue", weight: 1, opacity: 0.5, fill: false }} />
+      ))}
+    </>
+  )
+}
+
 const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
   const [searchQuery, setSearchQuery] = useState("")
   const [mapCenter, setMapCenter] = useState<[number, number]>([55.751244, 37.618423]) // Москва
@@ -46,6 +78,7 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
   const [isLoading, setIsLoading] = useState(false)
   const [options, setOptions] = useState<SearchResult[]>([])
   const [selectedSurveyType, setSelectedSurveyType] = useState<string | null>(null)
+  const [gridSize, setGridSize] = useState<number>(10) // Default grid size: 10km
 
   const surveyTypes: SurveyType[] = [
     { name: "Аэрофотосъёмка", icon: <PhotoCamera /> },
@@ -128,7 +161,7 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
             borderRight: "1px solid #e0e0e0",
           }}
         >
-          <Box sx={{ p: 2, width: "100%" }}>
+          <Box sx={{ p: 2, width: "100%", display: "flex", alignItems: "center" }}>
             <Autocomplete
               fullWidth
               options={options}
@@ -158,6 +191,19 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
               filterOptions={(x) => x}
               isOptionEqualToValue={(option, value) => option.display_name === value.display_name}
             />
+            <Box sx={{ width: 300, ml: 2 }}>
+              <Typography gutterBottom>Размер сетки (км)</Typography>
+              <Slider
+                value={gridSize}
+                onChange={(_, newValue) => setGridSize(newValue as number)}
+                aria-labelledby="grid-size-slider"
+                valueLabelDisplay="auto"
+                step={1}
+                marks
+                min={1}
+                max={100}
+              />
+            </Box>
           </Box>
           <Box sx={{ flexGrow: 1, position: "relative" }}>
             <MapContainer
@@ -177,6 +223,7 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
                 </Marker>
               )}
               <ZoomControl position="bottomright" />
+              <GridOverlay gridSize={gridSize} />
             </MapContainer>
           </Box>
         </Box>
@@ -197,7 +244,7 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
             <Box
               key={surveyType.name}
               sx={{
-                backgroundColor: selectedSurveyType === surveyType.name ? "hsl(12, 100%, 65%)" : "transparent",
+                backgroundColor: selectedSurveyType === surveyType.name ? "hsl(12, 100%, 65%)" : "black",
                 borderRadius: 2,
                 p: 2,
                 mb: 2,
@@ -218,7 +265,7 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
                   width: 12,
                   height: 12,
                   borderRadius: "50%",
-                  border: "2px solid hsl(12, 100%, 65%)",
+                  border: "2px solid #1976d2",
                   mr: 2,
                   display: "flex",
                   alignItems: "center",
