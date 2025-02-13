@@ -7,7 +7,7 @@ import { PhotoCamera, Radar, Terrain, Thermostat } from "@mui/icons-material"
 import "leaflet/dist/leaflet.css"
 import L from "leaflet"
 
-// Фикс для иконок маркеров Leaflet
+// Фикс для иконок маркеров Leaflet 
 delete L.Icon.Default.prototype._getIconUrl
 L.Icon.Default.mergeOptions({
   iconRetinaUrl: require("leaflet/dist/images/marker-icon-2x.png"),
