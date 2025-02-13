@@ -1,9 +1,9 @@
 "use client"
 
-import type React from "react"
-import { useState, useCallback, useEffect } from "react"
+import React, { useState, useCallback, useEffect } from "react"
 import { Box, Typography, Button, CircularProgress, Autocomplete, TextField } from "@mui/material"
 import { MapContainer, TileLayer, Marker, Popup, ZoomControl, useMap } from "react-leaflet"
+import { PhotoCamera, Radar, Terrain, Thermostat } from "@mui/icons-material"
 import "leaflet/dist/leaflet.css"
 import L from "leaflet"
 
@@ -27,6 +27,11 @@ interface SearchResult {
   display_name: string
 }
 
+interface SurveyType {
+  name: string
+  icon: React.ReactElement
+}
+
 const MapUpdater: React.FC<{ center: [number, number]; zoom: number }> = ({ center, zoom }) => {
   const map = useMap()
   map.setView(center, zoom)
@@ -42,7 +47,12 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
   const [options, setOptions] = useState<SearchResult[]>([])
   const [selectedSurveyType, setSelectedSurveyType] = useState<string | null>(null)
 
-  const surveyTypes = ["Аэрофотосъёмка", "Воздушно-лазерное сканирование", "Георазведка", "Тепловизионная съёмка"]
+  const surveyTypes: SurveyType[] = [
+    { name: "Аэрофотосъёмка", icon: <PhotoCamera /> },
+    { name: "Воздушно-лазерное сканирование", icon: <Radar /> },
+    { name: "Георазведка", icon: <Terrain /> },
+    { name: "Тепловизионная съёмка", icon: <Thermostat /> },
+  ]
 
   const handleSearch = useCallback(async (query: string) => {
     if (!query.trim()) return
@@ -180,36 +190,61 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
+            backgroundColor: "#f5f5f5",
           }}
         >
           {surveyTypes.map((surveyType) => (
             <Box
-              key={surveyType}
+              key={surveyType.name}
               sx={{
-                backgroundColor: selectedSurveyType === surveyType ? "#e0e0e0" : "#f0f0f0",
+                backgroundColor: selectedSurveyType === surveyType.name ? "#ffffff" : "transparent",
                 borderRadius: 2,
                 p: 2,
                 mb: 2,
-                height: "20%",
                 display: "flex",
                 alignItems: "center",
-                justifyContent: "center",
                 cursor: "pointer",
-                transition: "background-color 0.3s",
+                transition: "all 0.3s",
+                boxShadow: selectedSurveyType === surveyType.name ? "0 4px 10px rgba(0,0,0,0.1)" : "none",
                 "&:hover": {
-                  backgroundColor: "#e0e0e0",
+                  backgroundColor: "#ffffff",
+                  boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
                 },
               }}
-              onClick={() => setSelectedSurveyType(surveyType)}
+              onClick={() => setSelectedSurveyType(surveyType.name)}
             >
-              <Typography variant="body1">{surveyType}</Typography>
+              <Box
+                sx={{
+                  width: 12,
+                  height: 12,
+                  borderRadius: "50%",
+                  border: "2px solid #1976d2",
+                  mr: 2,
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {selectedSurveyType === surveyType.name && (
+                  <Box
+                    sx={{
+                      width: 6,
+                      height: 6,
+                      borderRadius: "50%",
+                      backgroundColor: "#1976d2",
+                    }}
+                  />
+                )}
+              </Box>
+              {React.cloneElement(surveyType.icon, { sx: { mr: 2, color: "#1976d2" } })}
+              <Typography variant="body1">{surveyType.name}</Typography>
             </Box>
           ))}
           <Box sx={{ mt: "auto" }}>
-            <Typography variant="body2" sx={{ mb: 1 }}>
+            <Typography variant="body2" sx={{ mb: 1, fontWeight: "bold", color: "#1976d2" }}>
               {selectedSurveyType ? `Выбран вид съёмки: ${selectedSurveyType}` : "Выберите вид съёмки"}
             </Typography>
-            <Button variant="contained" color="secondary" onClick={onClose} size="small" fullWidth>
+            <Button variant="contained" color="primary" onClick={onClose} size="large" fullWidth>
               Закрыть
             </Button>
           </Box>
@@ -220,6 +255,8 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
 }
 
 export default PopUp
+
+
 
 
 
