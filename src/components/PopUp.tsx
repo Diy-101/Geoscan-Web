@@ -218,7 +218,7 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
                   width: 12,
                   height: 12,
                   borderRadius: "50%",
-                  border: "2px solid #1976d2",
+                  border: "2px solid hsl(12, 100%, 65%)",
                   mr: 2,
                   display: "flex",
                   alignItems: "center",
