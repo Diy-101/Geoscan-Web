@@ -36,7 +36,7 @@ const tiers: Tier[] = [
   {
     title: 'Профессиональный',
     subheader: 'Recommended',
-    price: '0 - ∞',
+    price: '0 -  ∞ {\displaystyle \infty }',
     description: [
       'Поддержка 24/7',
       'Хранение фотографий 30 дней',
