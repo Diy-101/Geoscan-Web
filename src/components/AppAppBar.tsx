@@ -57,7 +57,7 @@ export default function AppAppBar() {
               <Button component="a" href="#features" variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
                 Преимущества
               </Button>
-              <Button component="a" href="#features" variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
+              <Button component="a" href="#testimonials" variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
                 Отзывы
               </Button>
               <Button component="a" href="#highlights" variant="text" color="info" sx={{ fontSize: '0.875rem', padding: '8px 12px' }}>
@@ -116,12 +116,12 @@ export default function AppAppBar() {
                   </IconButton>
                 </Box>
 
-                <MenuItem component="a" href="#features" >Преимущества</MenuItem>
-                <MenuItem component="a" href="#features" >Цены</MenuItem>
-                <MenuItem component="a" href="#highlights" >Особенности</MenuItem>
-                <MenuItem component="a" href="#pricing" >Цены</MenuItem>
-                <MenuItem component="a" href="#faq" >FAQ</MenuItem>
-                <MenuItem component="a" href="#footer">Блог</MenuItem>
+                <MenuItem component="a" href="#features" onClick={toggleDrawer(false)} >Преимущества</MenuItem>
+                <MenuItem component="a" href="#testimonials" onClick={toggleDrawer(false)} >Цены</MenuItem>
+                <MenuItem component="a" href="#highlights" onClick={toggleDrawer(false)} >Особенности</MenuItem>
+                <MenuItem component="a" href="#pricing" onClick={toggleDrawer(false)} >Цены</MenuItem>
+                <MenuItem component="a" href="#faq" onClick={toggleDrawer(false)} >FAQ</MenuItem>
+                <MenuItem component="a" href="#footer" onClick={toggleDrawer(false)}>Блог</MenuItem>
                 <Divider sx={{ my: 3 }} />
                 <MenuItem>
                   <Button color="primary" variant="contained" fullWidth>
