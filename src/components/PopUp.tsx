@@ -197,7 +197,7 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
             <Box
               key={surveyType.name}
               sx={{
-                backgroundColor: selectedSurveyType === surveyType.name ? "#ffffff" : "transparent",
+                backgroundColor: selectedSurveyType === surveyType.name ? "hsl(12, 100%, 65%)" : "transparent",
                 borderRadius: 2,
                 p: 2,
                 mb: 2,
@@ -207,7 +207,7 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
                 transition: "all 0.3s",
                 boxShadow: selectedSurveyType === surveyType.name ? "0 4px 10px rgba(0,0,0,0.1)" : "none",
                 "&:hover": {
-                  backgroundColor: "#ffffff",
+                  backgroundColor: "hsl(12, 100%, 50%)",
                   boxShadow: "0 4px 10px rgba(0,0,0,0.1)",
                 },
               }}
@@ -245,7 +245,7 @@ const PopUp: React.FC<PopUpProps> = ({ open, onClose, selectedRegion }) => {
               {selectedSurveyType ? `Выбран вид съёмки: ${selectedSurveyType}` : "Выберите вид съёмки"}
             </Typography>
             <Button variant="contained" color="primary" onClick={onClose} size="large" fullWidth>
-              Закрыть
+              Купить
             </Button>
           </Box>
         </Box>
